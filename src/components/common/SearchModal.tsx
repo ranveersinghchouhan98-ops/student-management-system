@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Search, X, User, ArrowRight, BookOpen, GraduationCap } from 'lucide-react';
+import { Search, X, ArrowRight } from 'lucide-react';
 import { Student } from '../../types';
 import { getStatusBadgeClass } from '../../utils/helpers';
+import { Avatar } from './Avatar';
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -95,10 +96,10 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                   className="w-full flex items-center justify-between p-2.5 rounded-lg hover:bg-blue-50/70 border border-transparent hover:border-blue-200 text-left transition-all group"
                 >
                   <div className="flex items-center gap-3 min-w-0">
-                    <img
-                      src={student.avatarUrl}
-                      alt={student.firstName}
-                      className="w-9 h-9 rounded-full object-cover border border-slate-200 shrink-0"
+                    <Avatar
+                      firstName={student.firstName}
+                      lastName={student.lastName}
+                      size="sm"
                     />
                     <div className="min-w-0">
                       <div className="flex items-center gap-2">

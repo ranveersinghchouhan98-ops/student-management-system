@@ -1,11 +1,12 @@
 import React from 'react';
-import { Eye, Edit2, Contact, Trash2, Mail, Phone, BookOpen } from 'lucide-react';
+import { Eye, Edit2, Contact, Trash2 } from 'lucide-react';
 import { Student } from '../../types';
 import {
   getStatusBadgeClass,
   getFeeStatusBadgeClass,
   formatCurrency,
 } from '../../utils/helpers';
+import { Avatar } from '../common/Avatar';
 
 interface StudentCardsProps {
   students: Student[];
@@ -51,10 +52,10 @@ export const StudentCards: React.FC<StudentCardsProps> = ({
             <div className="flex items-start justify-between gap-3">
               <div className="flex items-center gap-3">
                 <div className="relative">
-                  <img
-                    src={student.avatarUrl}
-                    alt={student.firstName}
-                    className="w-12 h-12 rounded-xl object-cover border border-slate-200 shrink-0"
+                  <Avatar
+                    firstName={student.firstName}
+                    lastName={student.lastName}
+                    size="lg"
                   />
                   <input
                     type="checkbox"

@@ -24,7 +24,6 @@ export const StudentFormModal: React.FC<StudentFormModalProps> = ({
     lastName: '',
     email: '',
     phone: '',
-    avatarUrl: `https://images.unsplash.com/photo-${1500000000000 + Math.floor(Math.random() * 999999)}?auto=format&fit=crop&q=80&w=256`,
     department: DEPARTMENTS[0].name,
     program: 'B.Tech Computer Science',
     year: 1,
@@ -34,21 +33,21 @@ export const StudentFormModal: React.FC<StudentFormModalProps> = ({
     enrollmentDate: new Date().toISOString().split('T')[0],
     status: 'Active',
     feeStatus: 'Paid',
-    totalFee: 8500,
-    paidFee: 8500,
+    totalFee: 85000,
+    paidFee: 85000,
     gender: 'Male',
     dateOfBirth: '2005-01-15',
     bloodGroup: 'O+',
     emergencyContact: {
       name: '',
-      relationship: 'Parent',
+      relationship: 'Father',
       phone: '',
     },
     address: {
       street: '',
-      city: 'Boston',
-      state: 'MA',
-      zipCode: '02115',
+      city: 'Bengaluru',
+      state: 'Karnataka',
+      zipCode: '560001',
     },
   };
 
@@ -93,7 +92,6 @@ export const StudentFormModal: React.FC<StudentFormModalProps> = ({
     e.preventDefault();
     if (!validate()) return;
 
-    // determine fee status dynamically
     let calculatedFeeStatus: FeeStatus = 'Paid';
     if (formData.paidFee === 0) {
       calculatedFeeStatus = 'Overdue';
@@ -211,7 +209,7 @@ export const StudentFormModal: React.FC<StudentFormModalProps> = ({
                   required
                   value={formData.firstName}
                   onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                  placeholder="e.g. Liam"
+                  placeholder="e.g. Aarav"
                   className="w-full px-3 py-2 text-sm border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600"
                 />
                 {errors.firstName && (
@@ -228,7 +226,7 @@ export const StudentFormModal: React.FC<StudentFormModalProps> = ({
                   required
                   value={formData.lastName}
                   onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                  placeholder="e.g. Walker"
+                  placeholder="e.g. Sharma"
                   className="w-full px-3 py-2 text-sm border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600"
                 />
                 {errors.lastName && (
@@ -245,7 +243,7 @@ export const StudentFormModal: React.FC<StudentFormModalProps> = ({
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  placeholder="student.name@university.edu"
+                  placeholder="student.name@university.ac.in"
                   className="w-full px-3 py-2 text-sm border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600"
                 />
                 {errors.email && <p className="text-xs text-rose-500 mt-1">{errors.email}</p>}
@@ -257,7 +255,7 @@ export const StudentFormModal: React.FC<StudentFormModalProps> = ({
                   type="text"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  placeholder="+1 (555) 000-0000"
+                  placeholder="+91 98450 00000"
                   className="w-full px-3 py-2 text-sm border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600"
                 />
               </div>
@@ -303,17 +301,8 @@ export const StudentFormModal: React.FC<StudentFormModalProps> = ({
                 </select>
               </div>
 
-              <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
-                  Avatar / Photo URL
-                </label>
-                <input
-                  type="text"
-                  value={formData.avatarUrl}
-                  onChange={(e) => setFormData({ ...formData, avatarUrl: e.target.value })}
-                  placeholder="https://..."
-                  className="w-full px-3 py-2 text-sm border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600"
-                />
+              <div className="bg-blue-50/50 p-3 rounded-lg border border-blue-100 flex items-center gap-2 text-xs text-blue-800">
+                <span>✨ Vector avatar badges are automatically generated from student initials. No image upload required.</span>
               </div>
             </div>
           )}
@@ -474,7 +463,7 @@ export const StudentFormModal: React.FC<StudentFormModalProps> = ({
                           emergencyContact: { ...formData.emergencyContact, name: e.target.value },
                         })
                       }
-                      placeholder="e.g. Robert Wright"
+                      placeholder="e.g. Rajesh Sharma"
                       className="w-full px-3 py-2 text-sm border border-slate-200 rounded-lg bg-white"
                     />
                   </div>
@@ -493,7 +482,7 @@ export const StudentFormModal: React.FC<StudentFormModalProps> = ({
                           },
                         })
                       }
-                      placeholder="Mother / Father / Guardian"
+                      placeholder="Father / Mother / Guardian"
                       className="w-full px-3 py-2 text-sm border border-slate-200 rounded-lg bg-white"
                     />
                   </div>
@@ -509,7 +498,7 @@ export const StudentFormModal: React.FC<StudentFormModalProps> = ({
                           emergencyContact: { ...formData.emergencyContact, phone: e.target.value },
                         })
                       }
-                      placeholder="+1 (555) 000-0000"
+                      placeholder="+91 98450 00000"
                       className="w-full px-3 py-2 text-sm border border-slate-200 rounded-lg bg-white"
                     />
                   </div>
@@ -532,7 +521,7 @@ export const StudentFormModal: React.FC<StudentFormModalProps> = ({
                           address: { ...formData.address, street: e.target.value },
                         })
                       }
-                      placeholder="123 University Way, Apt 4"
+                      placeholder="Flat / House No., Colony / Street"
                       className="w-full px-3 py-2 text-sm border border-slate-200 rounded-lg bg-white"
                     />
                   </div>
@@ -548,7 +537,7 @@ export const StudentFormModal: React.FC<StudentFormModalProps> = ({
                           address: { ...formData.address, city: e.target.value },
                         })
                       }
-                      placeholder="Boston"
+                      placeholder="e.g. Bengaluru"
                       className="w-full px-3 py-2 text-sm border border-slate-200 rounded-lg bg-white"
                     />
                   </div>
@@ -565,12 +554,12 @@ export const StudentFormModal: React.FC<StudentFormModalProps> = ({
                             address: { ...formData.address, state: e.target.value },
                           })
                         }
-                        placeholder="MA"
+                        placeholder="e.g. Karnataka"
                         className="w-full px-3 py-2 text-sm border border-slate-200 rounded-lg bg-white"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1">ZIP Code</label>
+                      <label className="block text-xs font-semibold text-slate-700 mb-1">PIN Code</label>
                       <input
                         type="text"
                         value={formData.address.zipCode}
@@ -580,7 +569,7 @@ export const StudentFormModal: React.FC<StudentFormModalProps> = ({
                             address: { ...formData.address, zipCode: e.target.value },
                           })
                         }
-                        placeholder="02115"
+                        placeholder="560001"
                         className="w-full px-3 py-2 text-sm border border-slate-200 rounded-lg bg-white"
                       />
                     </div>
@@ -595,7 +584,7 @@ export const StudentFormModal: React.FC<StudentFormModalProps> = ({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-semibold text-slate-700 mb-1">
-                  Total Semester Tuition ($)
+                  Total Semester Tuition (₹)
                 </label>
                 <input
                   type="number"
@@ -609,7 +598,7 @@ export const StudentFormModal: React.FC<StudentFormModalProps> = ({
 
               <div>
                 <label className="block text-xs font-semibold text-slate-700 mb-1">
-                  Tuition Amount Paid to Date ($)
+                  Tuition Amount Paid to Date (₹)
                 </label>
                 <input
                   type="number"
@@ -626,7 +615,7 @@ export const StudentFormModal: React.FC<StudentFormModalProps> = ({
                 <p>
                   Outstanding Balance:{' '}
                   <span className="font-mono font-bold">
-                    ${Math.max(0, formData.totalFee - formData.paidFee).toLocaleString()}
+                    ₹{Math.max(0, formData.totalFee - formData.paidFee).toLocaleString('en-IN')}
                   </span>
                 </p>
                 <p className="text-slate-500">

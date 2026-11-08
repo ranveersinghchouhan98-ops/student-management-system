@@ -4,18 +4,15 @@ import {
   GraduationCap,
   CalendarCheck,
   CreditCard,
-  TrendingUp,
-  AlertCircle,
   ArrowUpRight,
   UserPlus,
-  BookOpen,
-  FileCheck2,
-  ChevronRight,
   Award,
+  AlertCircle,
 } from 'lucide-react';
 import { Student, Department, FeeTransaction } from '../../types';
-import { formatCurrency, formatDate, getStatusBadgeClass, getFeeStatusBadgeClass } from '../../utils/helpers';
+import { formatCurrency, formatDate, getStatusBadgeClass } from '../../utils/helpers';
 import { ActiveTab } from '../common/Sidebar';
+import { Avatar } from '../common/Avatar';
 
 interface DashboardViewProps {
   students: Student[];
@@ -260,10 +257,10 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                   >
                     <td className="py-3 px-4">
                       <div className="flex items-center gap-3">
-                        <img
-                          src={student.avatarUrl}
-                          alt={student.firstName}
-                          className="w-8 h-8 rounded-full object-cover border border-slate-200 shrink-0"
+                        <Avatar
+                          firstName={student.firstName}
+                          lastName={student.lastName}
+                          size="sm"
                         />
                         <div className="min-w-0">
                           <p className="font-semibold text-slate-900 group-hover:text-blue-600 transition-colors truncate">

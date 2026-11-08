@@ -9,7 +9,6 @@ export interface Student {
   lastName: string;
   email: string;
   phone: string;
-  avatarUrl: string;
   department: string;
   program: string;
   year: number; // 1, 2, 3, 4
@@ -94,7 +93,7 @@ export interface FeeTransaction {
   date: string;
   amount: number;
   type: 'Tuition' | 'Lab Fee' | 'Library' | 'Hostel' | 'Examination';
-  paymentMethod: 'Credit Card' | 'Bank Transfer' | 'Cashier Desk' | 'Online Portal';
+  paymentMethod: 'UPI / NetBanking' | 'Bank Wire' | 'Debit Card' | 'Cashier Desk';
   status: 'Completed' | 'Pending' | 'Failed';
 }
 

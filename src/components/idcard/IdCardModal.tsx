@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Contact, Printer, Download, RefreshCw, X, ShieldCheck, QrCode } from 'lucide-react';
+import { Contact, Printer, X, ShieldCheck, QrCode } from 'lucide-react';
 import { Student } from '../../types';
-import { formatDate } from '../../utils/helpers';
+import { Avatar } from '../common/Avatar';
 
 interface IdCardModalProps {
   students: Student[];
@@ -129,13 +129,13 @@ export const IdCardModal: React.FC<IdCardModalProps> = ({
 
               {/* Card Body */}
               <div className="px-5 py-3 flex items-start gap-4 flex-1">
-                {/* Photo & IC Chip */}
+                {/* Vector Avatar Photo & IC Chip */}
                 <div className="flex flex-col items-center shrink-0">
                   <div className="relative">
-                    <img
-                      src={currentStudent.avatarUrl}
-                      alt={currentStudent.firstName}
-                      className="w-24 h-28 object-cover rounded-xl border-2 border-blue-600/30 shadow-xs"
+                    <Avatar
+                      firstName={currentStudent.firstName}
+                      lastName={currentStudent.lastName}
+                      size="idcard"
                     />
                     <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-500 border-2 border-white flex items-center justify-center text-[10px] text-white">
                       ✓
@@ -249,9 +249,9 @@ export const IdCardModal: React.FC<IdCardModalProps> = ({
                   </div>
                   <div>
                     <span className="text-[9px] font-semibold text-slate-400 uppercase block">
-                      Campus Police Hotline
+                      Campus Security Helpline
                     </span>
-                    <span className="font-mono font-bold text-blue-700">+1 (555) 911-ACAD</span>
+                    <span className="font-mono font-bold text-blue-700">+91 1800-425-ACAD</span>
                   </div>
                 </div>
               </div>
@@ -260,7 +260,7 @@ export const IdCardModal: React.FC<IdCardModalProps> = ({
               <div className="pt-2 border-t border-slate-200 flex items-end justify-between">
                 <div>
                   <div className="w-32 h-6 border-b border-slate-400 flex items-end justify-center text-[10px] italic font-serif text-slate-700">
-                    Marcus Shaw, Ph.D.
+                    Dr. Arvind Swaminathan
                   </div>
                   <span className="text-[8px] text-slate-400 uppercase tracking-wider block mt-0.5">
                     Authorized Registrar Signature

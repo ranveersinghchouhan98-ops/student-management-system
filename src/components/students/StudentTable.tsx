@@ -1,13 +1,10 @@
 import React from 'react';
 import {
-  MoreHorizontal,
   Eye,
   Edit2,
   Trash2,
   Contact,
   ArrowUpDown,
-  Mail,
-  Phone,
 } from 'lucide-react';
 import { Student } from '../../types';
 import {
@@ -15,6 +12,7 @@ import {
   getFeeStatusBadgeClass,
   formatCurrency,
 } from '../../utils/helpers';
+import { Avatar } from '../common/Avatar';
 
 interface StudentTableProps {
   students: Student[];
@@ -163,10 +161,10 @@ export const StudentTable: React.FC<StudentTableProps> = ({
                     {/* Student Name & Avatar */}
                     <td className="py-3 px-4">
                       <div className="flex items-center gap-3">
-                        <img
-                          src={student.avatarUrl}
-                          alt={student.firstName}
-                          className="w-9 h-9 rounded-full object-cover border border-slate-200 shrink-0"
+                        <Avatar
+                          firstName={student.firstName}
+                          lastName={student.lastName}
+                          size="md"
                         />
                         <div className="min-w-0">
                           <p className="font-semibold text-slate-900 group-hover:text-blue-600 transition-colors truncate">

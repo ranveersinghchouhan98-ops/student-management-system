@@ -1,9 +1,9 @@
 import { EnrollmentStatus, FeeStatus, AttendanceStatus, Student } from '../types';
 
 export const formatCurrency = (amount: number): string => {
-  return new Intl.NumberFormat('en-US', {
+  return new Intl.NumberFormat('en-IN', {
     style: 'currency',
-    currency: 'USD',
+    currency: 'INR',
     maximumFractionDigits: 0,
   }).format(amount);
 };
@@ -12,7 +12,7 @@ export const formatDate = (dateString: string): string => {
   if (!dateString) return '-';
   try {
     const d = new Date(dateString);
-    return d.toLocaleDateString('en-US', {
+    return d.toLocaleDateString('en-IN', {
       month: 'short',
       day: 'numeric',
       year: 'numeric',
@@ -114,8 +114,8 @@ export const exportStudentsToCsv = (students: Student[]): void => {
     'Attendance %',
     'Status',
     'Fee Status',
-    'Total Tuition',
-    'Paid Tuition',
+    'Total Tuition (INR)',
+    'Paid Tuition (INR)',
     'Enrollment Date',
   ];
 

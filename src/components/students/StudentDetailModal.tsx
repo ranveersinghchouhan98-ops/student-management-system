@@ -5,18 +5,10 @@ import {
   GraduationCap,
   CalendarCheck,
   CreditCard,
-  Mail,
-  Phone,
-  MapPin,
-  Calendar,
   Contact,
   Printer,
   Edit2,
-  FileText,
-  DollarSign,
   PlusCircle,
-  Award,
-  CheckCircle2,
 } from 'lucide-react';
 import { Student, GradeRecord, FeeTransaction, AttendanceRecord } from '../../types';
 import {
@@ -26,6 +18,7 @@ import {
   getFeeStatusBadgeClass,
   getAttendanceStatusBadgeClass,
 } from '../../utils/helpers';
+import { Avatar } from '../common/Avatar';
 
 interface StudentDetailModalProps {
   student: Student | null;
@@ -51,7 +44,7 @@ export const StudentDetailModal: React.FC<StudentDetailModalProps> = ({
   onRecordPayment,
 }) => {
   const [activeTab, setActiveTab] = useState<'overview' | 'academics' | 'attendance' | 'fees'>('overview');
-  const [payAmount, setPayAmount] = useState<number>(1000);
+  const [payAmount, setPayAmount] = useState<number>(10000);
   const [showPayModal, setShowPayModal] = useState(false);
 
   if (!isOpen || !student) return null;
@@ -86,10 +79,10 @@ export const StudentDetailModal: React.FC<StudentDetailModalProps> = ({
 
           <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex items-center gap-4">
-              <img
-                src={student.avatarUrl}
-                alt={student.firstName}
-                className="w-16 h-16 rounded-xl object-cover border-2 border-white/20 shadow-md shrink-0"
+              <Avatar
+                firstName={student.firstName}
+                lastName={student.lastName}
+                size="xl"
               />
               <div className="min-w-0">
                 <div className="flex items-center gap-2.5 flex-wrap">
@@ -307,7 +300,7 @@ export const StudentDetailModal: React.FC<StudentDetailModalProps> = ({
                     <div>
                       <span className="text-slate-400 block">Residential Address:</span>
                       <p className="font-semibold text-slate-800 mt-0.5">
-                        {student.address.street}, {student.address.city}, {student.address.state} {student.address.zipCode}
+                        {student.address.street}, {student.address.city}, {student.address.state} - {student.address.zipCode}
                       </p>
                     </div>
 
@@ -411,7 +404,7 @@ export const StudentDetailModal: React.FC<StudentDetailModalProps> = ({
                 <div>
                   <h3 className="text-sm font-bold text-slate-900">Attendance Compliance Log</h3>
                   <p className="text-xs text-slate-500 mt-0.5">
-                    Requirement: Minimum 75% attendance for examination eligibility
+                    Requirement: Minimum 75% attendance for university examination eligibility
                   </p>
                 </div>
                 <div className="text-right">
@@ -579,7 +572,7 @@ export const StudentDetailModal: React.FC<StudentDetailModalProps> = ({
             <form onSubmit={handlePay} className="mt-4 space-y-4">
               <div>
                 <label className="block text-xs font-semibold text-slate-700 mb-1">
-                  Payment Amount ($)
+                  Payment Amount (₹)
                 </label>
                 <input
                   type="number"

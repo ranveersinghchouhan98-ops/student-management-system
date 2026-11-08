@@ -1,22 +1,19 @@
 import React, { useState } from 'react';
 import {
   CreditCard,
-  DollarSign,
-  Download,
   Plus,
   Receipt,
   Search,
-  Filter,
-  CheckCircle2,
   Printer,
   X,
 } from 'lucide-react';
-import { Student, FeeTransaction, FeeStatus } from '../../types';
+import { Student, FeeTransaction } from '../../types';
 import {
   formatCurrency,
   formatDate,
   getFeeStatusBadgeClass,
 } from '../../utils/helpers';
+import { Avatar } from '../common/Avatar';
 
 interface FeesViewProps {
   students: Student[];
@@ -39,9 +36,9 @@ export const FeesView: React.FC<FeesViewProps> = ({
   // New payment form
   const [newPayment, setNewPayment] = useState({
     studentId: students[0]?.id || '',
-    amount: 1500,
+    amount: 15000,
     type: 'Tuition' as const,
-    paymentMethod: 'Bank Transfer' as const,
+    paymentMethod: 'UPI / NetBanking' as const,
   });
 
   const totalReceivable = students.reduce((acc, s) => acc + s.totalFee, 0);
@@ -218,10 +215,10 @@ export const FeesView: React.FC<FeesViewProps> = ({
                   <tr key={st.id} className="hover:bg-slate-50/70 transition-colors">
                     <td className="py-3 px-4">
                       <div className="flex items-center gap-3">
-                        <img
-                          src={st.avatarUrl}
-                          alt={st.firstName}
-                          className="w-8 h-8 rounded-full object-cover border border-slate-200"
+                        <Avatar
+                          firstName={st.firstName}
+                          lastName={st.lastName}
+                          size="sm"
                         />
                         <div>
                           <p className="font-semibold text-slate-900">
@@ -261,7 +258,7 @@ export const FeesView: React.FC<FeesViewProps> = ({
                               studentId: st.id,
                               amount: bal,
                               type: 'Tuition',
-                              paymentMethod: 'Bank Transfer',
+                              paymentMethod: 'UPI / NetBanking',
                             });
                             setIsRecordModalOpen(true);
                           }}
@@ -365,7 +362,7 @@ export const FeesView: React.FC<FeesViewProps> = ({
 
               <div>
                 <label className="block text-xs font-semibold text-slate-700 mb-1">
-                  Payment Amount ($)
+                  Payment Amount (₹)
                 </label>
                 <input
                   type="number"
@@ -405,10 +402,10 @@ export const FeesView: React.FC<FeesViewProps> = ({
                   }
                   className="w-full px-3 py-2 text-xs border border-slate-200 rounded-lg bg-white"
                 >
-                  <option value="Bank Transfer">Direct Bank Wire / ACH</option>
-                  <option value="Credit Card">Credit / Debit Card</option>
-                  <option value="Online Portal">Campus Student Portal</option>
-                  <option value="Cashier Desk">Cashier Desk Window</option>
+                  <option value="UPI / NetBanking">UPI / Net Banking</option>
+                  <option value="Debit Card">Debit / Credit Card</option>
+                  <option value="Bank Wire">Direct NEFT / RTGS Wire</option>
+                  <option value="Cashier Desk">University Cashier Window</option>
                 </select>
               </div>
 
@@ -466,7 +463,7 @@ export const FeesView: React.FC<FeesViewProps> = ({
                 <h3 className="text-base font-bold text-slate-900 tracking-tight">
                   AcademiaPulse University
                 </h3>
-                <p className="text-xs text-slate-500">Office of the University Bursar</p>
+                <p className="text-xs text-slate-500">Office of the University Finance & Accounts</p>
                 <div className="mt-2 inline-block px-2.5 py-0.5 bg-blue-50 text-blue-800 text-[11px] font-mono rounded border border-blue-200 font-semibold">
                   {receiptTx.invoiceNo}
                 </div>
@@ -508,7 +505,7 @@ export const FeesView: React.FC<FeesViewProps> = ({
                 </div>
                 <div className="text-right">
                   <div className="w-24 h-8 border border-dashed border-slate-300 rounded flex items-center justify-center text-[10px] text-slate-400 font-serif italic">
-                    Bursar Stamp
+                    Accounts Stamp
                   </div>
                 </div>
               </div>

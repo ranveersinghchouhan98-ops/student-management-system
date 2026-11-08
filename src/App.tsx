@@ -401,7 +401,7 @@ export function App() {
             date: new Date().toISOString().split('T')[0],
             amount,
             type: 'Tuition',
-            paymentMethod: 'Online Portal',
+            paymentMethod: 'UPI / NetBanking',
             status: 'Completed',
           };
           handleRecordPayment(tx);
